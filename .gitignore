@@ -1,0 +1,7 @@
+# environment
+venv/
+.env
+__pycache__/
+
+# alemnic
+versions/*.pyc

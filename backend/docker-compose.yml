@@ -1,0 +1,59 @@
+services:
+  rest_api:
+    build: ./rest_api
+    container_name: rest_api
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/mydb
+    depends_on:
+      - db
+    volumes:
+      - ./rest_api/alembic:/app/alembic
+
+  # graphql_api:
+  #   build: ./backend/graphql_api
+  #   container_name: graphql_api
+  #   ports:
+  #     - "8001:8000"
+  #   environment:
+  #     - PYTHONUNBUFFERED=1
+  #     - DATABASE_URL=postgresql://postgres:postgres@db:5432/mydb
+  #   depends_on:
+  #     - db
+
+  # soap_api:
+  #   build: ./backend/soap_api
+  #   container_name: soap_api
+  #   ports:
+  #     - "8002:8000"
+  #   environment:
+  #     - PYTHONUNBUFFERED=1
+  #     - DATABASE_URL=postgresql://postgres:postgres@db:5432/mydb
+  #   depends_on:
+  #     - db
+
+  # grpc_api:
+  #   build: ./backend/grpc_api
+  #   container_name: grpc_api
+  #   ports:
+  #     - "50051:50051"
+  #   environment:
+  #     - PYTHONUNBUFFERED=1
+  #     - DATABASE_URL=postgresql://postgres:postgres@db:5432/mydb
+  #   depends_on:
+  #     - db
+
+  db:
+    image: postgres:16
+    container_name: postgres_db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mydb
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

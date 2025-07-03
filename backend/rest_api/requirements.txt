@@ -6,3 +6,4 @@ databases
 pydantic
 alembic
 psycopg2-binary
+faker

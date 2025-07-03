@@ -10,7 +10,7 @@ services:
     depends_on:
       - db
     volumes:
-      - ./rest_api/alembic:/app/alembic
+      - ./rest_api:/app
 
   # graphql_api:
   #   build: ./backend/graphql_api

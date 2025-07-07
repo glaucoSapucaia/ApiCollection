@@ -1,0 +1,12 @@
+services:
+  vue-app:
+    build:
+      context: ./vue/vue-apiCollection    # ← onde está o package.json
+      dockerfile: ../Dockerfile.dev       # ← relativo ao context acima
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./vue/vue-apiCollection:/app
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development

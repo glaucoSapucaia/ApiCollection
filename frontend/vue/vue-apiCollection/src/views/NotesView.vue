@@ -32,15 +32,19 @@ const nextPage = () => {
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto">
+  <div class="max-w-4xl mx-auto bg-white text-black p-6 rounded-lg shadow-md">
     <h1 class="text-3xl font-bold mb-6">Notas</h1>
 
     <div class="grid gap-4 mb-6 sm:grid-cols-1 md:grid-cols-2">
-      <div v-for="note in pagedNotes" :key="note.id" class="p-4 border rounded shadow-sm hover:shadow-md transition">
-        <h2 class="text-xl font-semibold mb-2">{{ note.title }}</h2>
-        <p class="text-gray-700 mb-2">{{ note.content }}</p>
-        <p class="text-sm italic text-gray-500 mb-1">Autor: {{ note.author }}</p>
-        <p class="text-xs text-gray-400">
+      <div
+        v-for="note in pagedNotes"
+        :key="note.id"
+        class="p-4 border border-gray-700 rounded shadow-sm hover:shadow-md transition bg-gray-50"
+      >
+        <h2 class="text-xl font-semibold mb-2 text-black">{{ note.title }}</h2>
+        <p class="text-gray-800 mb-2">{{ note.content }}</p>
+        <p class="text-sm italic text-gray-600 mb-1">Autor: {{ note.author }}</p>
+        <p class="text-xs text-gray-500">
           Criado em: {{ new Date(note.created_at).toLocaleDateString() }}
         </p>
       </div>
@@ -50,15 +54,15 @@ const nextPage = () => {
       <button
         @click="prevPage"
         :disabled="page === 1"
-        class="px-4 py-2 rounded bg-gray-300 disabled:opacity-50"
+        class="px-4 py-2 rounded bg-gray-700 text-white disabled:opacity-50 hover:bg-black transition"
       >
         Anterior
       </button>
-      <span class="self-center">Página {{ page }} de {{ totalPages }}</span>
+      <span class="self-center text-black">Página {{ page }} de {{ totalPages }}</span>
       <button
         @click="nextPage"
         :disabled="page === totalPages"
-        class="px-4 py-2 rounded bg-gray-300 disabled:opacity-50"
+        class="px-4 py-2 rounded bg-gray-700 text-white disabled:opacity-50 hover:bg-black transition"
       >
         Próximo
       </button>

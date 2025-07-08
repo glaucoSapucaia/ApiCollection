@@ -1,28 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import NotasView from '../views/NotasView.vue'
-import NovaNotaView from '../views/NovaNotaView.vue'
+import HomeView from '@/views/HomeView.vue'
+import AboutView from '@/views/AboutView.vue'
+import NotesView from '@/views/NotesView.vue'
+import AddNoteView from '@/views/AddNoteView.vue'
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView,
-  },
-  {
-    path: '/notas',
-    name: 'notas',
-    component: NotasView,
-  },
-  {
-    path: '/nova-nota',
-    name: 'nova-nota',
-    component: NovaNotaView,
-  },
+  { path: '/', component: HomeView },
+  { path: '/about', component: AboutView },
+  { path: '/notes', component: NotesView },
+  { path: '/add-note', component: AddNoteView },
 ]
 
 const router = createRouter({
-  history: createWebHistory(import.meta.env.BASE_URL), // mais robusto
+  history: createWebHistory(),
   routes,
 })
 
